@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<form action="#" th:action="@{/}" th:object="${poziv}" method="post">
+    <table>
+        <tr>
+            <td>Model:</td>
+            <td><input type="text" th:field="*{model}" /></td>
+            <td th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></td>
+        </tr>
+        <tr>
+            <td>Poziv na broj:</td>
+            <td><input type="text" th:field="*{pozivNB}" /></td>
+            <td th:if="${#fields.hasErrors('pozivNB')}" th:errors="*{pozivNB}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
