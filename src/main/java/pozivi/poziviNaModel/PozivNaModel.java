@@ -1,8 +1,5 @@
 package pozivi.poziviNaModel;
 
-import pozivi.IPozivNaBroj;
-import pozivi.IsNumeric;
-
 /**
  * Created by msarcevic on 27.8.2015..
  */
@@ -10,11 +7,11 @@ public abstract class PozivNaModel {
 
     protected String msgErrorCode ="poziv.fail.default";
     protected Integer nOfParts=1;
-    protected boolean valid = true;
+    protected boolean isValid = true;
 
     protected void sveukupnaDuzinaCheck (String kod){
         if (kod.length()>22) {
-            valid = false;
+            isValid = false;
             msgErrorCode ="poziv.duzina.veca.max";
         }
     }
@@ -22,7 +19,7 @@ public abstract class PozivNaModel {
         //if za ako je crtica zadnja
         if (kod.equals("")|| !isNumeric(kod))
         {
-            valid=false;
+            isValid =false;
             msgErrorCode="poziv.fail.default";
         }
     }
@@ -109,7 +106,7 @@ public abstract class PozivNaModel {
     }
 
     public boolean validatePoziv(String kod){
-        return valid;
+        return isValid;
     };
     public String getMsgErrorCode() {
         return msgErrorCode;

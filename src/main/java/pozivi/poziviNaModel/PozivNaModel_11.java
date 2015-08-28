@@ -12,21 +12,21 @@ public class PozivNaModel_11 extends PozivNaModel {
             do {
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
-                if (valid==true && nOfParts == 1) {
+                if (isValid ==true && nOfParts == 1) {
                     if (!validateMOD11(next) || next.length() > 12) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode="poziv.modul11.fail";
                     }
                 }
-                if (valid==true && nOfParts == 2) {
+                if (isValid ==true && nOfParts == 2) {
                     if (!validateMOD11(next) || next.length() > 12) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode="poziv.modul11.fail";
                     }
                 }
-                if (valid==true && nOfParts > 2) {
+                if (isValid ==true && nOfParts > 2) {
                     if (next.length() > 12) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode="poziv.podatak.predug";
                     }
                 }
@@ -34,25 +34,25 @@ public class PozivNaModel_11 extends PozivNaModel {
                 nOfParts++;
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
-            if (valid==true && nOfParts == 2) {
+            if (isValid ==true && nOfParts == 2) {
                 if (!validateMOD11(kod) || kod.length() > 12) {
-                    valid = false;
+                    isValid = false;
                     msgErrorCode="poziv.modul11.fail";
                 }
             }
-            if (valid==true && nOfParts > 2) if (kod.length() > 12) {
-                valid = false;
+            if (isValid ==true && nOfParts > 2) if (kod.length() > 12) {
+                isValid = false;
                 msgErrorCode="poziv.podatak.predug";
             }
-            if (valid==true && nOfParts > 3) {
-                valid = false;
+            if (isValid ==true && nOfParts > 3) {
+                isValid = false;
                 msgErrorCode="poziv.previse.dijelova";
             }
         } else {
-                valid = false;
+                isValid = false;
                 msgErrorCode = "poziv.required.parts";
             }
-        return valid;
+        return isValid;
     }
 
     @Override

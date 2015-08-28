@@ -13,7 +13,7 @@ public class PozivValidator implements Validator {
 
     @Override
     public boolean supports(Class aClass) {
-        return IPozivNaBroj.class.equals(aClass);
+        return PozivNaModel.class.equals(aClass);
     }
 
     @Override

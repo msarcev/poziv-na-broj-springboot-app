@@ -1,10 +1,5 @@
 package pozivi.poziviNaModel;
 
-import pozivi.IsNumeric;
-import pozivi.IPozivNaBroj;
-import pozivi.algs.PozivValidateMOD11;
-import pozivi.algs.PozivValidateMOD11MBG;
-
 /**
  * Created by msarcevic on 23.8.2015..
  */
@@ -17,16 +12,16 @@ public class PozivNaModel_22 extends PozivNaModel {
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (valid==true && nOfParts == 1) {
+                if (isValid ==true && nOfParts == 1) {
                     if (!validateMOD11(next) || next.length() != 4) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode = "poziv.modul11.fail";
                     }
                 }
                 //check za drugi podatak, ako ima treceg
-                if (valid==true && nOfParts == 2) {
+                if (isValid ==true && nOfParts == 2) {
                     if (next.length() != 13 || !validateMOD11MBG(next)) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode = "poziv.modul11.fail";
                     }
                 }
@@ -35,28 +30,28 @@ public class PozivNaModel_22 extends PozivNaModel {
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
             //check za drugi podatak, ako nema treceg
-            if (valid==true && nOfParts == 2) {
+            if (isValid ==true && nOfParts == 2) {
                 if (kod.length() != 13 || !validateMOD11MBG(kod)) {
-                    valid = false;
+                    isValid = false;
                     msgErrorCode = "poziv.modul11.fail";
                 }
             }
-            if (valid==true && nOfParts == 3) {
+            if (isValid ==true && nOfParts == 3) {
                 if (kod.length() != 3) {
-                    valid = false;
+                    isValid = false;
                     msgErrorCode = "poziv.podatak.treci.neispravan";
                 }
             }
             //check za previse djelova
-            if (valid==true && nOfParts > 3) {
-                valid = false;
+            if (isValid ==true && nOfParts > 3) {
+                isValid = false;
                 msgErrorCode = "poziv.previse.dijelova";
             }
         } else {
-                valid = false;
+                isValid = false;
                 msgErrorCode = "poziv.premalo.podataka";
         }
-        return valid;
+        return isValid;
     }
 
     @Override

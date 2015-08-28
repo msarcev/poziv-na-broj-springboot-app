@@ -1,101 +1,66 @@
 package pozivi.poziviNaModel;
 
-import pozivi.IsNumeric;
-import pozivi.IPozivNaBroj;
-import pozivi.algs.PozivValidateMOD11;
-
 /**
  * Created by msarcevic on 23.8.2015..
  */
-public class PozivNaModel_24 implements IPozivNaBroj {
-    private String msgErrorCode ="poziv.fail.default";
-    private Integer nOfParts=1;
-    private IsNumeric num = new IsNumeric();
-    private String pozivNB;
-    private boolean valid = true;
-    public String getPozivNB() {
-        return pozivNB;
-    }
-    public void setPozivNB(String pozivNB) {
-        this.pozivNB = pozivNB;
-    }
+public class PozivNaModel_24 extends PozivNaModel {
 
     @Override
     public boolean validatePoziv(String kod) {
-        PozivValidateMOD11 algMOD11 = new PozivValidateMOD11();
-        if (kod.length() > 22) {
-            valid = false;
-            msgErrorCode = "poziv.duzina.veca.max";
-            return valid;
-        }
+        sveukupnaDuzinaCheck(kod);
         if (kod.contains("-")) {
             do {
                 String next = kod.substring(0, kod.indexOf("-"));
-                if (next.equals("") || !num.isNumeric(next)){
-                    valid= false;
-                    msgErrorCode="poziv.fail.default";
-                    return valid;
-                }
+                emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (nOfParts == 1) {
-                    if (!algMOD11.checkKBR(next) || next.length() != 4) {
-                        valid = false;
+                if (isValid ==true && nOfParts == 1) {
+                    if (!validateMOD11(next) || next.length() != 4) {
+                        isValid = false;
                         msgErrorCode = "poziv.modul11.fail";
-                        return valid;
                     }
                 }
-                if (nOfParts == 2) {
+                if (isValid ==true && nOfParts == 2) {
                     if (next.length() > 13) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode = "poziv.podatak.predug";
-                        return valid;
                     }
                 }
-                if (nOfParts > 2) {
+                if (isValid ==true && nOfParts > 2) {
                     if (next.length() > 12) {
-                        valid = false;
+                        isValid = false;
                         msgErrorCode = "poziv.podatak.predug";
-                        return valid;
                     }
                 }
                 kod = kod.substring(kod.indexOf("-") + 1, kod.length());
                 nOfParts++;
             } while (kod.contains("-"));
-            //if za ako je crtica zadnja
-            if (kod.equals("")|| !num.isNumeric(kod)) {valid=false; msgErrorCode="poziv.fail.default";}
-            if (nOfParts == 2) {
+            emptyOrCharactersCheck(kod);
+            if (isValid ==true && nOfParts == 2) {
                 if (kod.length() > 13) {
-                    valid = false;
+                    isValid = false;
                     msgErrorCode = "poziv.podatak.predug";
-                    return valid;
                 }
             }
-            if (nOfParts > 2) {
+            if (isValid ==true && nOfParts > 2) {
                 if (kod.length() > 12) {
-                    valid = false;
+                    isValid = false;
                     msgErrorCode = "poziv.podatak.predug";
-                    return valid;
                 }
             }
             //check za previse djelova
-            if (nOfParts > 4) {
-                valid = false;
+            if (isValid ==true && nOfParts > 4) {
+                isValid = false;
                 msgErrorCode = "poziv.previse.dijelova";
-                return valid;
             }
 
         } else {
-            if (kod.equals("") || !num.isNumeric(kod)){
-                valid= false;
-                msgErrorCode="poziv.fail.default";
-                return valid;
-            }else if (!algMOD11.checkKBR(kod) || kod.length() != 4) {
-                valid = false;
+            emptyOrCharactersCheck(kod);
+            if (isValid ==true && (!validateMOD11(kod) || kod.length() != 4)) {
+                isValid = false;
                 msgErrorCode = "poziv.modul11.fail";
-                return valid;
             }
         }
-        return valid;
+        return isValid;
     }
 
     @Override

@@ -19,14 +19,12 @@ public class PozivFactory {
         if (model.equals("12")) {
             return new PozivNaModel_12();
         }
-
         if (model.equals("21")) {
             return new PozivNaModel_21();
         }
         if (model.equals("22")) {
             return new PozivNaModel_22();
         }
-        /*
         if (model.equals("23")) {
             return new PozivNaModel_23();
         }
@@ -81,7 +79,6 @@ public class PozivFactory {
         if (model.equals("68")) {
             return new PozivNaModel_68();
         }
-        */
         return null;
 
     }
