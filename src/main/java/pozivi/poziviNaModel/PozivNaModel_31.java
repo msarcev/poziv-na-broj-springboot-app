@@ -18,7 +18,7 @@ public class PozivNaModel_31 extends PozivNaModel{
                     isValid =false;
                     msgErrorCode="Prvi podatak je neispravan";
                 }
-                if (isValid ==true && nOfParts>1 && (next.length() > 12)){
+                if (isValid && nOfParts>1 && (next.length() > 12)){
                     isValid =false;
                     msgErrorCode="poziv.podatak.predug";
                 }
@@ -27,18 +27,18 @@ public class PozivNaModel_31 extends PozivNaModel{
                 nOfParts++;
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
-            if (isValid ==true && nOfParts == 4 && kod.length()>12){
+            if (isValid && nOfParts == 4 && kod.length()>12){
                 isValid =false;
                 msgErrorCode="poziv.podatak.predug";
             }
-            if (isValid ==true && nOfParts>4){
+            if (isValid && nOfParts>4){
                 isValid =false;
                 msgErrorCode="poziv.previse.dijelova";
             }
         }
         else {
             emptyOrCharactersCheck(kod);
-            if (isValid ==true && (kod.length() > 6 || !validateISO7064(kod))) {
+            if (isValid && (kod.length() > 6 || !validateISO7064(kod))) {
                 isValid =false;
                 msgErrorCode="poziv.podatak.prvi.neispravan";
             }

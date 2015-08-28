@@ -12,14 +12,14 @@ public class PozivNaModel_22 extends PozivNaModel {
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (isValid ==true && nOfParts == 1) {
+                if (isValid && nOfParts == 1) {
                     if (!validateMOD11(next) || next.length() != 4) {
                         isValid = false;
                         msgErrorCode = "poziv.modul11.fail";
                     }
                 }
                 //check za drugi podatak, ako ima treceg
-                if (isValid ==true && nOfParts == 2) {
+                if (isValid && nOfParts == 2) {
                     if (next.length() != 13 || !validateMOD11MBG(next)) {
                         isValid = false;
                         msgErrorCode = "poziv.modul11.fail";
@@ -30,20 +30,20 @@ public class PozivNaModel_22 extends PozivNaModel {
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
             //check za drugi podatak, ako nema treceg
-            if (isValid ==true && nOfParts == 2) {
+            if (isValid && nOfParts == 2) {
                 if (kod.length() != 13 || !validateMOD11MBG(kod)) {
                     isValid = false;
                     msgErrorCode = "poziv.modul11.fail";
                 }
             }
-            if (isValid ==true && nOfParts == 3) {
+            if (isValid && nOfParts == 3) {
                 if (kod.length() != 3) {
                     isValid = false;
                     msgErrorCode = "poziv.podatak.treci.neispravan";
                 }
             }
             //check za previse djelova
-            if (isValid ==true && nOfParts > 3) {
+            if (isValid && nOfParts > 3) {
                 isValid = false;
                 msgErrorCode = "poziv.previse.dijelova";
             }

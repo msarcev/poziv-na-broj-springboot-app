@@ -13,19 +13,19 @@ public class PozivNaModel_24 extends PozivNaModel {
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (isValid ==true && nOfParts == 1) {
+                if (isValid && nOfParts == 1) {
                     if (!validateMOD11(next) || next.length() != 4) {
                         isValid = false;
                         msgErrorCode = "poziv.modul11.fail";
                     }
                 }
-                if (isValid ==true && nOfParts == 2) {
+                if (isValid && nOfParts == 2) {
                     if (next.length() > 13) {
                         isValid = false;
                         msgErrorCode = "poziv.podatak.predug";
                     }
                 }
-                if (isValid ==true && nOfParts > 2) {
+                if (isValid && nOfParts > 2) {
                     if (next.length() > 12) {
                         isValid = false;
                         msgErrorCode = "poziv.podatak.predug";
@@ -35,27 +35,27 @@ public class PozivNaModel_24 extends PozivNaModel {
                 nOfParts++;
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
-            if (isValid ==true && nOfParts == 2) {
+            if (isValid && nOfParts == 2) {
                 if (kod.length() > 13) {
                     isValid = false;
                     msgErrorCode = "poziv.podatak.predug";
                 }
             }
-            if (isValid ==true && nOfParts > 2) {
+            if (isValid && nOfParts > 2) {
                 if (kod.length() > 12) {
                     isValid = false;
                     msgErrorCode = "poziv.podatak.predug";
                 }
             }
             //check za previse djelova
-            if (isValid ==true && nOfParts > 4) {
+            if (isValid && nOfParts > 4) {
                 isValid = false;
                 msgErrorCode = "poziv.previse.dijelova";
             }
 
         } else {
             emptyOrCharactersCheck(kod);
-            if (isValid ==true && (!validateMOD11(kod) || kod.length() != 4)) {
+            if (isValid && (!validateMOD11(kod) || kod.length() != 4)) {
                 isValid = false;
                 msgErrorCode = "poziv.modul11.fail";
             }

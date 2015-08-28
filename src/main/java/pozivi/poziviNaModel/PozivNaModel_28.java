@@ -13,19 +13,19 @@ public class PozivNaModel_28 extends PozivNaModel{
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (isValid ==true && nOfParts == 1) {
+                if (isValid && nOfParts == 1) {
                     if ( next.length() != 4 || !validateMOD11(next) ) {
                         isValid = false;
                         msgErrorCode = "poziv.podatak.prvi.neispravan";
                     }
                 }
-                if (isValid ==true && nOfParts == 2) {
+                if (isValid && nOfParts == 2) {
                     if ( next.length() != 3 || !validateMOD11(next) ) {
                         isValid = false;
                         msgErrorCode = "poziv.podatak.drugi.neispravan";
                     }
                 }
-                if (isValid ==true && nOfParts == 3) {
+                if (isValid && nOfParts == 3) {
                     if ( next.length() != 6 || !validateMOD11(next) ) {
                         isValid = false;
                         msgErrorCode = "poziv.podatak.treci.neispravan";
@@ -36,21 +36,21 @@ public class PozivNaModel_28 extends PozivNaModel{
             } while (kod.contains("-"));
             //if za ako je crtica zadnja
             emptyOrCharactersCheck(kod);
-            if (isValid ==true && nOfParts == 3) {
+            if (isValid && nOfParts == 3) {
                 if ( kod.length() != 6 || !validateMOD11(kod) ) {
                     isValid = false;
                     msgErrorCode = "poziv.podatak.treci.neispravan";
                 }
             }
-            if (isValid ==true && ( nOfParts ==4 && kod.length()>6)){
+            if (isValid && ( nOfParts ==4 && kod.length()>6)){
                 isValid = false;
                 msgErrorCode = "poziv.podatak.predug";
             }
-            if (isValid ==true && nOfParts < 3){
+            if (isValid && nOfParts < 3){
                 isValid =false;
                 msgErrorCode="poziv.premalo.podataka";
             }
-            if (isValid ==true &&  nOfParts > 4){
+            if (isValid &&  nOfParts > 4){
                 isValid =false;
                 msgErrorCode="poziv.previse.dijelova";
             }

@@ -14,11 +14,11 @@ public class PozivNaModel_29 extends PozivNaModel{
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (isValid ==true && nOfParts == 1 && (next.length() != 4 || !validateMOD11(next))) {
+                if (isValid && nOfParts == 1 && (next.length() != 4 || !validateMOD11(next))) {
                     isValid =false;
                     msgErrorCode="Prvi podatak je neispravan";
                 }
-                if (isValid ==true && nOfParts== 2 && (next.length() > 12 || !validateMOD11(next))){
+                if (isValid && nOfParts== 2 && (next.length() > 12 || !validateMOD11(next))){
                     isValid =false;
                     msgErrorCode="Drugi podatak je neispravan";
                 }
@@ -26,11 +26,11 @@ public class PozivNaModel_29 extends PozivNaModel{
                 nOfParts++;
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
-            if (isValid ==true &&  nOfParts == 3 && (kod.length() > 12 || !validateMOD11(kod))){
+            if (isValid &&  nOfParts == 3 && (kod.length() > 12 || !validateMOD11(kod))){
                 isValid =false;
                 msgErrorCode="poziv.podatak.treci.neispravan";
             }
-            if (isValid ==true && (nOfParts < 3 || nOfParts > 3)){
+            if (isValid && (nOfParts < 3 || nOfParts > 3)){
                 isValid =false;
                 msgErrorCode= "poziv.broj.podataka.fail";
             }

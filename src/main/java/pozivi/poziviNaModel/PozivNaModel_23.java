@@ -13,7 +13,7 @@ public class PozivNaModel_23 extends PozivNaModel {
                 String next = kod.substring(0, kod.indexOf("-"));
                 emptyOrCharactersCheck(next);
                 //check za prvi podatak
-                if (isValid ==true && nOfParts == 1) {
+                if (isValid && nOfParts == 1) {
                     String check6 = next.substring(0, 1);
                     if (!check6.equals("6")) {
                         isValid = false;
@@ -24,7 +24,7 @@ public class PozivNaModel_23 extends PozivNaModel {
                         msgErrorCode = "poziv.modul11.fail";
                     }
                 }
-                if (isValid ==true && nOfParts > 1) {
+                if (isValid && nOfParts > 1) {
                     if (next.length() > 12) {
                         isValid = false;
                         msgErrorCode = "poziv.podatak.predug";
@@ -34,20 +34,20 @@ public class PozivNaModel_23 extends PozivNaModel {
                 nOfParts++;
             } while (kod.contains("-"));
             emptyOrCharactersCheck(kod);
-            if (isValid ==true && nOfParts > 1) {
+            if (isValid && nOfParts > 1) {
                 if (kod.length() > 12) {
                     isValid = false;
                     msgErrorCode = "poziv.podatak.predug";
                 }}
                 //check za previse djelova
-                if (isValid ==true && nOfParts > 4) {
+                if (isValid && nOfParts > 4) {
                     isValid = false;
                     msgErrorCode = "poziv.previse.dijelova";
                 }
 
             } else {
             emptyOrCharactersCheck(kod);
-            if (isValid ==true) {
+            if (isValid) {
                     String check6 = kod.substring(0, 1);
                     if (!check6.equals("6") || !validateMOD11(kod) || kod.length() != 4) {
                     isValid = false;
