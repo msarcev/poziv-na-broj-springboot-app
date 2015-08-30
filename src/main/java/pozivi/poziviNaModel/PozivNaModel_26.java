@@ -85,7 +85,7 @@ public class PozivNaModel_26 extends PozivNaModel{
                     msgErrorCode = "poziv.podatak.predug";
                 }
             }
-            if (isValid =true && nOfParts == 4){
+            if (isValid && nOfParts == 4){
              if (kod.length() > 13) {
                  isValid = false;
                  msgErrorCode= "poziv.podatak.predug";
@@ -114,7 +114,7 @@ public class PozivNaModel_26 extends PozivNaModel{
     }
     public static void main(String[] args) {
         PozivNaModel_26 poz = new PozivNaModel_26();
-        String test = "3127-1214-123412311123-12";
+        String test = "3633-12-2341231112412";
         System.out.println("Test je : " + poz.validatePoziv(test) + "      /     err code ; " + poz.getMsgErrorCode());
     }
 }
