@@ -5,7 +5,7 @@ package pozivi.poziviNaModel;
  */
 public abstract class PozivNaModel {
 
-    protected String msgErrorCode ="poziv.fail.default";
+    protected String msgErrorCode ="";
     protected Integer nOfParts=1;
     protected boolean isValid = true;
 
@@ -49,7 +49,7 @@ public abstract class PozivNaModel {
             }
             sum = sum % 11;
             if (sum == 0 || sum == 1) sum = 0;
-            System.out.println("KBR je " + KBR + " a treba bit " + sum);
+        //    System.out.println("KBR je " + KBR + " a treba bit " + sum);
             if (sum == KBR) return true;
             else return false;
         }
@@ -69,7 +69,7 @@ public abstract class PozivNaModel {
             ponder++;
         }
         sum = sum % 11;
-        System.out.println("Sum je " + sum + "   (treba biti 0)");
+    //    System.out.println("Sum je " + sum + "   (treba biti 0)");
         if (sum == 0) return true;
         else return false;
     }
@@ -100,7 +100,7 @@ public abstract class PozivNaModel {
         if (KBR == 0) KBR = 1;
         else if (KBR == 1) KBR = 0;
         else KBR = 11 - KBR;
-        System.out.println(" KBR je : " + KBU  + "... a treba biti : "+ KBR);
+    //    System.out.println(" KBR je : " + KBU  + "... a treba biti : "+ KBR);
         if (KBR == KBU) return true;
         else return false;
     }

@@ -1,10 +1,8 @@
 package pozivi.poziviNaModel;
-
 /**
  * Created by msarcevic on 17.8.2015..
  */
 public class PozivNaModel_05 extends PozivNaModel{
-
     @Override
     public boolean validatePoziv(String kod) {
         sveukupnaDuzinaCheck(kod);
@@ -54,7 +52,7 @@ public class PozivNaModel_05 extends PozivNaModel{
     }
     public static void main(String[] args){
         PozivNaModel_05 poz5 = new PozivNaModel_05();
-        String test = "01234560";
+        String test = "01235";
         System.out.println("Test je : "+ poz5.validatePoziv(test));
     }
 }
