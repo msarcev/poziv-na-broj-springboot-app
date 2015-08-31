@@ -1,6 +1,11 @@
 package Test;
 
 import pozivi.PozivFactory;
+import pozivi.poziviNaModel.PozivNaModel;
+import pozivi.poziviNaModel.PozivNaModel_05;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
 
 /**
@@ -13,68 +18,75 @@ MOD11 :    len2 "24"  |  len5 "01235"       |       len8 "01235588"      |      
 MOD11MBG : len2 "27"  |  len5 "01228"       |       len8 "01235591"      |         len11 "23412311124"           |           len13 "2341231112412"
 ISO7064 :  len2 "27"  |  len5 "01220"       |       len8 "01235586"      |         len11 "23412311124"           |           len13 "2341231112415"
 
+
+            String MOD11_len2= "24", MOD11_len5 ="01235", MOD11_len8 ="01235588", MOD11_len11= "23412311120" ,MOD11_len13= "2341231112410";
+            String MOD11MBG_len2 = "27",MOD11MBG_len5 ="01228" , MOD11MBG_len8 ="01235591", MOD11MBG_len11 ="23412311124" , MOD11MBG_len13 ="2341231112412";
+            String ISO7064_len2 = "27" , ISO7064_len5 ="01220" , ISO7064_len8 ="01235586" , ISO7064_len11 ="23412311124" , ISO7064_len13 ="2341231112415";
+            String slova_len2  = "as" , slova_len5 =  "asdfe",slova_len8= "asdfeass",slova_len11= "asdfeassert",slova_len13 ="asdfeassertah";
+
 slova : len2 "as"  |  len5 "asdfe"       |       len8 "asdfeass"      |         len11 "asdfeassert"           |           len13 "asdfeassertah"
 test1 = "asdas";
  */
 
 public class Test {
+
     public static void main(String[] args) {
         Validacije val = new Validacije();
         PozivFactory fact = new PozivFactory();
 
-        // ALL MOD11 5 - 5 - 5 - 2
-        String test1 = "01235-01235-01235-24";
-        // ALL MOD11 5 - 5
-        String test2 = "01235-01235";
+        val.test_Poziv_05();
+//        val.allTests("01235");
 
-     //   val.allTestaString(test1);
-        val.generateString();
-
-        for (int i = 5; i < 70; i++) {
-            String model = Integer.toString(i);
-            try {
-               /* PozivNaModel poz = fact.odaberiPoziv(model);
-                boolean result = poz.validatePoziv(test1);    //<-------- TEST
-                String error = poz.getMsgErrorCode();
-                if (result) {
-                    System.out.println("Test Result  za MODEL            " + model +  "            : " + result );
-                    System.out.println("");
-                } else {
-                    System.out.println("Test Result  za MODEL            " + model +  " er: *" + error + " *"  );
-                    System.out.println("");
-                }*/
-
-
-            } catch (NullPointerException e){
+//        for (int i = 5; i < 70; i++) {
+//            String model = Integer.toString(i);
+//            try {
+//                PozivNaModel poz = fact.odaberiPoziv(model);
+//                boolean result = poz.validatePoziv(test1);    //<-------- TEST
+//                String error = poz.getMsgErrorCode();
+//                if (result) {
+//                    System.out.println("Test Result  za MODEL            " + model +  "            : " + result );
+//                    System.out.println("");
+//                } else {
+//                    System.out.println("Test Result  za MODEL            " + model +  " er: *" + error + " *"  );
+//                    System.out.println("");
+//                }
+//
+//
+//            } catch (NullPointerException e){
 //                System.out.println("Exception : *" + e.getMessage() + "*  za MODEL:" + model);
-            }
-        }
+//            }
+//        }
     }
 
-    public static class Validacije {
+    private static class Validacije {
 
-        public void generateString(){
-            String MOD11_len2 = "24", MOD11_len5 ="01235", MOD11_len8 ="01235588", MOD11_len11= "23412311120" ,MOD11_len13= "2341231112410";
-            String MOD11MBG_len2 = "27",MOD11MBG_len5 ="01228" , MOD11MBG_len8 ="01235591", MOD11MBG_len11 ="23412311124" , MOD11MBG_len13 ="2341231112412";
-            String ISO7064_len2 = "27" , ISO7064_len5 ="01220" , ISO7064_len8 ="01235586" , ISO7064_len11 ="23412311124" , ISO7064_len13 ="2341231112415";
-            String slova_len2  = "as" , slova_len5 =  "asdfe",slova_len8= "asdfeass",slova_len11= "asdfeassert",slova_len13 ="asdfeassertah";
-            TreeMap<Integer, String> mOD11 = new TreeMap<Integer,String>();
-            TreeMap<Integer, String> mOD11MBG = new TreeMap<Integer,String>();
-            TreeMap<Integer, String> iSO7064 = new TreeMap<Integer,String>();
-            TreeMap<Integer, String> slova = new TreeMap<Integer,String>();
-            mOD11.put(2,"24"); mOD11.put(5,"01235");mOD11.put(8,"01235588"); mOD11.put(11,"23412311120"); mOD11.put(13,"2341231112410");
-            mOD11MBG.put(2,"27"); mOD11MBG.put(5,"01228");mOD11MBG.put(8,"01235591");mOD11MBG.put(11,"23412311124");mOD11MBG.put(13,"2341231112412");
-            iSO7064.put(2,"27"); iSO7064.put(5,"01220");iSO7064.put(8,"01235586"); iSO7064.put(11,"23412311124"); iSO7064.put(13,"2341231112415");
-            slova.put(2,"as"); slova.put(5,"asdfe");slova.put(8,"asdfeass"); slova.put(11,"asdfeassert"); slova.put(13,"asdfeassertah");
+        String dash = "-";
+        String MOD11_len2= "24", MOD11_len5 ="01235", MOD11_len8 ="01235588", MOD11_len11= "23412311120" ,MOD11_len13= "2341231112410";
+        String MOD11MBG_len2 = "27",MOD11MBG_len5 ="01228" , MOD11MBG_len8 ="01235591", MOD11MBG_len11 ="23412311124" , MOD11MBG_len13 ="2341231112412";
+        String ISO7064_len2 = "27" , ISO7064_len5 ="01220" , ISO7064_len8 ="01235586" , ISO7064_len11 ="23412311124" , ISO7064_len13 ="2341231112415";
+        String slova_len2  = "as" , slova_len5 =  "asdfe",slova_len8= "asdfeass",slova_len11= "asdfeassert",slova_len13 ="asdfeassertah";
 
-            for (Integer i : mOD11.keySet()){
-
+        private void test_Poziv_05(){
+            PozivNaModel poz ;
+            List tests = new ArrayList();
+            tests.add(slova_len2 + dash + MOD11_len5 );
+            tests.add(MOD11_len5 + dash + MOD11_len5 );
+            tests.add(MOD11_len5 + dash + MOD11_len5 + dash + MOD11_len5);
+            tests.add(MOD11_len5 + dash + MOD11_len5 + dash + MOD11_len2 + dash + MOD11_len2);
+            for (Object testString : tests){
+                String string = (String) testString;
+                try {
+                    poz = new PozivNaModel_05();
+                    assert poz.validatePoziv(string)==true;
+                    System.out.println("Assert " + Integer.toString(tests.indexOf(testString)+1) + " true");
+                }
+                catch (AssertionError e){
+                    System.out.println("Assertion fail on string : *" + testString + "*. Test nr. : " + Integer.toString(tests.indexOf(testString)+1));
+                }
             }
-
-
         }
 
-        public void allTestaString (String s){
+        private void allTests(String s){
             boolean mod11_test=validateMOD11(s);
             boolean mod11MBG_test= validateMOD11MBG(s);
             boolean ISO7064_test= validateISO7064(s);
@@ -82,8 +94,7 @@ public class Test {
             System.out.println("String *" + s + "* + mod11MBG_test =" + mod11MBG_test);
             System.out.println("String *" + s + "* + ISO7064_test =" + ISO7064_test);
         }
-
-        public boolean validateMOD11(String pozivPart){
+        private boolean validateMOD11(String pozivPart){
             Integer ponder = 2;
             Integer KBR;
             Integer sum = 0;
@@ -104,7 +115,7 @@ public class Test {
             }
             else return false;
         }
-        public boolean validateMOD11MBG(String pozivPart){
+        private boolean validateMOD11MBG(String pozivPart){
             Integer ponder = 1;
             Integer ponderCheck=0;
             Integer sum = 0;
@@ -122,7 +133,7 @@ public class Test {
             if (sum == 0) return true;
             else return false;
         }
-        public boolean validateISO7064(String pozivPart){
+        private boolean validateISO7064(String pozivPart){
             Integer ponder = 2;
             Integer KBU;
             Integer KBR=0;

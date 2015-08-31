@@ -52,7 +52,7 @@ public class PozivNaModel_05 extends PozivNaModel{
     }
     public static void main(String[] args){
         PozivNaModel_05 poz5 = new PozivNaModel_05();
-        String test = "01235";
+        String test = "01235-01235";
         System.out.println("Test je : "+ poz5.validatePoziv(test));
     }
 }
