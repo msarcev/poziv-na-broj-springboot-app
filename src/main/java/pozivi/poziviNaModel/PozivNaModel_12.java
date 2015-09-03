@@ -6,6 +6,8 @@ package pozivi.poziviNaModel;
 public class PozivNaModel_12 extends PozivNaModel {
     @Override
     public boolean validatePoziv(String kod) {
+        isValid= true;
+        nOfParts = 1;
         sveukupnaDuzinaCheck(kod);
         if (kod.contains("-")) {
             do {

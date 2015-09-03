@@ -7,7 +7,8 @@ public class PozivNaModel_30 extends PozivNaModel {
 
     @Override
     public boolean validatePoziv(String kod) {
-        //check ako je poziv predug
+        isValid= true;
+        nOfParts = 1;
         sveukupnaDuzinaCheck(kod);
         if (kod.contains("-")) {
             do {

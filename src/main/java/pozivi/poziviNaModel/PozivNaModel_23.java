@@ -7,7 +7,9 @@ public class PozivNaModel_23 extends PozivNaModel {
 
     @Override
     public boolean validatePoziv(String kod) {
-
+        isValid= true;
+        nOfParts = 1;
+        sveukupnaDuzinaCheck(kod);
         if (kod.contains("-")) {
             do {
                 String next = kod.substring(0, kod.indexOf("-"));

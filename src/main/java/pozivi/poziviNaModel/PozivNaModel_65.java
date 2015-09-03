@@ -7,8 +7,9 @@ public class PozivNaModel_65 extends PozivNaModel {
 
     @Override
     public boolean validatePoziv(String kod) {
+        isValid= true;
+        nOfParts = 1;
         sveukupnaDuzinaCheck(kod);
-
         if (kod.contains("-")) {
             do {
                 String next = kod.substring(0, kod.indexOf("-"));
@@ -68,7 +69,6 @@ public class PozivNaModel_65 extends PozivNaModel {
         else {
                 isValid = false;
                 msgErrorCode = "poziv.required.parts";
-                return isValid;
         }
         return isValid;
     }

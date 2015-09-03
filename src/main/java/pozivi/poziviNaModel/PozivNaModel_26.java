@@ -7,8 +7,9 @@ public class PozivNaModel_26 extends PozivNaModel{
 
     @Override
     public boolean validatePoziv(String kod) {
+        isValid= true;
+        nOfParts = 1;
         sveukupnaDuzinaCheck(kod);
-
         if (kod.contains("-")) {
             do {
                 String next = kod.substring(0, kod.indexOf("-"));
@@ -103,7 +104,6 @@ public class PozivNaModel_26 extends PozivNaModel{
         else {
                 isValid = false;
                 msgErrorCode = "poziv.premalo.podatak";
-                return isValid;
         }
         return isValid;
     }

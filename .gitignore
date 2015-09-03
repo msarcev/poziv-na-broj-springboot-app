@@ -42,10 +42,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .idea/workspace.xml
-<<<<<<< HEAD
 target/classes/pozivi/poziviNaModel/PozivNaModel_05.class
 *.class
 =======
 gs-maven.iml
->>>>>>> origin/master
 .idea/workspace.xml

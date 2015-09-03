@@ -1,10 +1,13 @@
 package pozivi.poziviNaModel;
+
 /**
  * Created by msarcevic on 17.8.2015..
  */
 public class PozivNaModel_05 extends PozivNaModel{
     @Override
     public boolean validatePoziv(String kod) {
+        isValid= true;
+        nOfParts = 1;
         sveukupnaDuzinaCheck(kod);
         if (kod.contains("-")) {
             do {
