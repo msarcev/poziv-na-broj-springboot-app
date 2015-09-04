@@ -1,0 +1,30 @@
+html {
+    text-align: center;
+    margin-top: 20%;
+}
+h2 {
+margin-bottom:50px;
+}
+body {
+    background-color: #b0c4de;
+    font-family:"Arial", Helvetica, sans-serif;
+    margin:auto;
+}
+form {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top:25px;
+    }
+    table {
+    }
+   tr {
+   margin-bottom:5px;
+   margin-left:-20px;
+   }
+   td.error{
+   width:150px;
+   }
+ .center {
+    margin:auto;
+  }
