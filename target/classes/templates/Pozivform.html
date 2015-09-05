@@ -1,11 +1,13 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+<link href="/resources/css/style.css" rel="stylesheet" type="text/css"  />
 <body>
+<h2 class="center">Poziv na broj validacija</h2>
 <form action="#" th:action="@{/}" th:object="${poziv}" method="post">
-    <table>
+    <table class="center">
         <tr>
             <td>Model:</td>
             <td><input type="text" th:field="*{model}" /></td>
-            <td th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></td>
+            <td th:if="${#fields.hasErrors('model')}" th:errors="*{model}">error</td>
         </tr>
         <tr>
             <td>Poziv na broj:</td>
