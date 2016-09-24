@@ -1,6 +1,6 @@
 package Test;
 
-import pozivi.poziviNaModel.*;
+import com.itsistemi.app.logic.*;
 
 import static org.junit.Assert.assertEquals;
 
